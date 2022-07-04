@@ -12,5 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c17701bda1f6f43a02def659ef4e56, type: 3}
   m_Name: Task_test
   m_EditorClassIdentifier: 
-  codeName: 
-  description: 
+  category: {fileID: 11400000, guid: 96e66743194a7084c9fa85573ab44b2d, type: 2}
+  codeName: KILL_THE_SILME
+  description: you have to kill the slime
+  action: {fileID: 11400000, guid: a5b67505491c72d49a294f12154210b3, type: 2}
+  targets:
+  - {fileID: 11400000, guid: e2ae858ddc5d1304da99a83edbc03c8f, type: 2}
+  initialSuccessValue: {fileID: 0}
+  needSuccessToComplete: 5
