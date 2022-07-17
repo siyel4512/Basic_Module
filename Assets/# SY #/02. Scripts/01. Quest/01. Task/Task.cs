@@ -20,6 +20,7 @@ public class Task : ScriptableObject
     // 다향한 곳에서 사용될 수 있으며
     // 대표적으로 UI Update Code를 Event에 연결해 놓으면
     // Task의 상태를 Update에서 계속 추적할 필요 없이상태가 바뀌면 알아서 UI가 Update됨
+    // 참고 블로그1 https://tmandarange.tistory.com/entry/C-DelegateActionfunc
     public delegate void StateChangedHandler(Task task, TaskState currentState, TaskState prevState);
 
     // CurrentSuccess 값이 변했을 때 알려주는 event (다름 곳에서 계속 Update로 추적하기 않아도 되게 하기 위함임...
@@ -71,11 +72,12 @@ public class Task : ScriptableObject
         {
             var prevState = state;
             state = value;
-            onStateChaged?.Invoke(this, state, prevState); // ?.은 이변수(onStateChaged)가 null이면 null을 반환하고 아니면 뒤에 함수(Invoke)를 시랭하라는 의미
+            onStateChaged?.Invoke(this, state, prevState); // ?.은 이변수(onStateChaged)가 null이면 null을 반환하고 아니면 뒤에 함수(Invoke)를 실행하라는 의미 (delegate + event 형식)
+                                                           // 참고 https://stackoverflow.com/questions/42607986/what-is-the-purpose-of-in-somedelegatename-invoke
         }
     }
 
-    public string CodeName => codeName; // 프로퍼티 람디식이디
+    public string CodeName => codeName; // 프로퍼티 람디식이다
                                         // public string CodeName() => codeName;
                                         // public string CodeName { get => codeName;} 
                                         // public string CodeName { get return codeName;} 
@@ -83,6 +85,8 @@ public class Task : ScriptableObject
                                         // 과 같은 형태이다.
                                         // 참고 블로그1 https://stackoverflow.com/questions/31764532/what-does-the-operator-mean-in-a-property
                                         // 참고 블로그2 https://stackoverflow.com/questions/55779199/what-means-in-property-declaration-not-a-lambda-expression
+                                        // 참고 블로그3 https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=myjet1490&logNo=221370659121
+                                        // 참고 블로그4 https://itmining.tistory.com/34
     public string Description => description;
     public int NeedSuccessToComplete => needSuccessToComplete;
     public Category Category => category;
