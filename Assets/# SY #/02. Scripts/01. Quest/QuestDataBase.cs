@@ -29,6 +29,8 @@ public class QuestDataBase : ScriptableObject
 
     // ContextMenu 만들기
     // ConTextMenu란 인스펙터창에서 함수를 실행할 수 있게 만들어줌
+    // 생성된 ScriptableObject의 인스펙터창 우축상단 메뉴버튼을 눌려 보면 해당 함수를 볼 수 있다.
+    // 해당 함수를 선택하면 자동적으로 List에 추가된다.
     // 참고 블로그 https://shhouse.tistory.com/7?category=452932
     [ContextMenu("FindQuests")]
     private void FindQuests()

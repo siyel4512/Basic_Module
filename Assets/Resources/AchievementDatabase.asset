@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e11b15e452f0346803e3410095dd9c, type: 3}
   m_Name: AchievementDatabase
   m_EditorClassIdentifier: 
-  quests: []
+  quests:
+  - {fileID: 11400000, guid: 9ad6281a6731d07408cba0a29417cddb, type: 2}
