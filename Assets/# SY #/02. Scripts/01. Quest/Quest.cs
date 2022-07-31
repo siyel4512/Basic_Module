@@ -187,6 +187,15 @@ public class Quest : ScriptableObject
         onCanceled?.Invoke(this);
     }
 
+    // Clone 함수
+    public Quest Clone()
+    {
+        var clone = Instantiate(this);
+        clone.taskGroups = taskGroups.Select(x => new TaskGroup(x)).ToArray();
+
+        return clone;
+    }
+
     // onTaskSuccessChanged event를 Task의 event에 등록하기 위한 Callback함수
     private void OnSuccessChanged(Task task, int currentSuccess, int prevSuccess)
         => onTaskSuccessChaged?.Invoke(this, task, currentSuccess, prevSuccess);

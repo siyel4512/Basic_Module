@@ -29,6 +29,17 @@ public class TaskGroup
 
     public TaskGroupState State { get; private set; }
 
+    // 다른 TaskGroup을 Copy하는 생성자
+    public TaskGroup(TaskGroup copyTarget)
+    {
+        // .Select는 시퀀스의 각 요소를 새 폼으로 투영한다는 의미
+        // 참고 블로그1 https://docs.microsoft.com/ko-kr/dotnet/api/system.collections.generic.ireadonlylist-1?view=net-6.0
+        // .ToArray()는 List<T>의 요소를 새 배열에 복사한다는 의미
+        // 참고 블로그2 https://docs.microsoft.com/ko-kr/dotnet/api/system.collections.generic.list-1.toarray?view=net-6.0
+        tasks = copyTarget.Tasks.Select(x => Object.Instantiate(x)).ToArray();
+    }
+
+
     // 소유주를 Setting해 줄 Setup함수
     public void Setup(Quest owner)
     {
